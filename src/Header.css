@@ -1,0 +1,44 @@
+/* Header styles */
+.header {
+  background-image: url('./image_1.jpg'); /* Adjust path based on file structure */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+  padding-left: 60%;
+}
+
+  /* Logo styling */
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+  }
+  
+  
+  /* Navigation styling */
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+  }
+  
+  .nav-links li {
+    display: inline;
+    color: white;
+  }
+  
+  .nav-links  {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    transition: color 0.3s ease;
+    cursor: pointer;
+  }
+
+  

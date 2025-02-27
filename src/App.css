@@ -1,38 +1,186 @@
-.App {
+/* General Styles */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f7fc;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container */
+.container {
+  width: 400px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Card */
+.card {
+  padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Heading */
+h2 {
+  color: #333;
+  margin-bottom: 15px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* File Input */
+.file-input {
+  width: 100%;
+  padding: 10px;
+  border: 2px dashed #5a67d8;
+  background: #f8f9ff;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.file-input:hover {
+  background: #ebefff;
+  border-color: #3f51b5;
+}
+
+/* File List */
+.file-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  max-height: 150px;
+  overflow-y: auto;
+  border-radius: 5px;
+}
+
+.file-item {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  background: #eef2ff;
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  align-items: center;
+  transition: background 0.3s ease-in-out;
+}
+
+.file-item:hover {
+  background: #dde5ff;
+}
+
+/* Remove Button */
+.remove-btn {
+  background: #ff4d4d;
+  border: none;
+  color: white;
+  font-size: 14px;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background 0.3s ease-in-out;
+}
+
+.remove-btn:hover {
+  background: #ff3333;
+}
+
+/* Output Filename Input */
+.filename-input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #5a67d8;
+  border-radius: 5px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.filename-input:focus {
+  border-color: #3f51b5;
+  background: #f8f9ff;
+}
+
+/* Error Message */
+.error-text {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Upload Button */
+.upload-btn {
+  width: 100%;
+  padding: 10px;
+  background: #5a67d8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.upload-btn:hover {
+  background: #4a56c2;
+}
+
+.upload-btn:disabled {
+  background: #c0c4e2;
+  cursor: not-allowed;
+}
+
+/* Loader Animation */
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 3px solid white;
+  border-top: 3px solid #4a56c2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Success Container */
+.success-container {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-top: 10px;
+  color: #28a745;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Success Icon */
+.success-icon {
+  font-size: 24px;
+  margin-right: 8px;
+}
+
+/* Download Button */
+.download-btn {
+  width: 100%;
+  padding: 10px;
+  background: #28a745;
   color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease-in-out;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.download-btn:hover {
+  background: #218838;
 }
