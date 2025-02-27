@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { FaCheckCircle } from "react-icons/fa";
+import { FaCheckCircle, FaPaperclip } from "react-icons/fa";
 import * as XLSX from "xlsx";
 import "./App.css";
 
@@ -22,42 +22,48 @@ function App() {
     setFiles(updatedFiles);
   };
 
+  const resetFiles = () => {
+    setFiles([]);
+    setOutputFileName("");
+    setError("");
+    setProcessed(false);
+  };
+
   const handleUpload = async () => {
     if (files.length === 0) return;
-  
+
     let finalFileName = outputFileName.trim();
     if (!finalFileName) {
       setError("Output file name is required.");
       return;
     }
-  
-    // Ensure the file name always ends with .xlsx
+
     if (!finalFileName.toLowerCase().endsWith(".xlsx")) {
       finalFileName += ".xlsx";
     }
-  
-    setOutputFileName(finalFileName); // Update state with corrected filename
+
+    setOutputFileName(finalFileName);
     setLoading(true);
     setProcessed(false);
     setError("");
-  
+
     const formData = new FormData();
     files.forEach((file) => formData.append("files", file));
-  
+
     try {
       const response = await axios.post("https://quizzscriptbackend.onrender.com/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-  
+
       setJsonData(response.data.data);
       setProcessed(true);
     } catch (error) {
       console.error("Error uploading file", error);
+      setError("Failed to upload. Please try again.");
     } finally {
       setLoading(false);
     }
   };
-  
 
   const downloadExcel = () => {
     if (!jsonData) return;
@@ -72,9 +78,13 @@ function App() {
   return (
     <div className="container">
       <div className="card">
-        <h2>Upload Excel Files</h2>
+        <h2>Upload report files</h2>
 
-        <input type="file" multiple onChange={handleFileChange} className="file-input" />
+        <label className="file-input-label">
+          <FaPaperclip className="icon" />
+          <input type="file" multiple onChange={handleFileChange} className="file-input" />
+          Choose Files
+        </label>
 
         {files.length > 0 && (
           <ul className="file-list">
@@ -89,7 +99,7 @@ function App() {
 
         <input
           type="text"
-          className="filename-input"
+          className="input-field"
           placeholder="Enter output file name"
           value={outputFileName}
           onChange={(e) => {
@@ -100,9 +110,15 @@ function App() {
 
         {error && <p className="error-text">{error}</p>}
 
-        <button className="upload-btn" onClick={handleUpload} disabled={loading || !outputFileName.trim()}>
-          {loading ? <span className="loader"></span> : "Upload"}
-        </button>
+        <div className="button-group">
+          <button className="upload-btn" onClick={handleUpload} disabled={loading || !outputFileName.trim()}>
+            {loading ? <span className="loader"></span> : "Upload"}
+          </button>
+
+          <button className="reset-btn" onClick={resetFiles} disabled={files.length === 0}>
+            Reset
+          </button>
+        </div>
 
         {processed && (
           <div className="success-container">

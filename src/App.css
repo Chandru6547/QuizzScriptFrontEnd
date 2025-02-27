@@ -1,186 +1,168 @@
-/* General Styles */
-body {
-  font-family: "Arial", sans-serif;
-  background-color: #f4f7fc;
-  margin: 0;
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  background-color: #f4f4f4;
 }
 
-/* Container */
-.container {
-  width: 400px;
-  background: #ffffff;
+.card {
+  background: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
   text-align: center;
 }
 
-/* Card */
-.card {
-  padding: 20px;
-}
-
-/* Heading */
 h2 {
-  color: #333;
-  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight:600;
+  text-align: center;
+  color: #007bff;
+  transition: color 0.3s ease-in-out;
+
 }
 
-/* File Input */
-.file-input {
-  width: 100%;
+h2:hover {
+  color: #0056b3;
+}
+
+.file-input-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  border: 2px dashed #ccc;
   padding: 10px;
-  border: 2px dashed #5a67d8;
-  background: #f8f9ff;
-  border-radius: 5px;
   cursor: pointer;
-  outline: none;
-  transition: all 0.3s ease-in-out;
+  margin-bottom: 15px;
+  transition: 0.3s;
 }
 
-.file-input:hover {
-  background: #ebefff;
-  border-color: #3f51b5;
+.file-input-label:hover {
+  background: #e0e0e0;
 }
 
-/* File List */
+.icon {
+  margin-right: 8px;
+  color: #555;
+}
+
+.file-input {
+  display: none;
+}
+
 .file-list {
   list-style: none;
   padding: 0;
-  margin: 10px 0;
-  max-height: 150px;
+  margin: 0;
+  max-height: 120px;
   overflow-y: auto;
-  border-radius: 5px;
 }
 
 .file-item {
   display: flex;
   justify-content: space-between;
-  background: #eef2ff;
+  align-items: center;
+  background: #eaf1ff;
   padding: 8px;
-  margin-bottom: 5px;
+  margin: 5px 0;
   border-radius: 5px;
   font-size: 14px;
-  align-items: center;
-  transition: background 0.3s ease-in-out;
 }
 
-.file-item:hover {
-  background: #dde5ff;
-}
-
-/* Remove Button */
 .remove-btn {
-  background: #ff4d4d;
+  background: #ff6b6b;
   border: none;
   color: white;
-  font-size: 14px;
   padding: 4px 8px;
-  cursor: pointer;
   border-radius: 3px;
-  transition: background 0.3s ease-in-out;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .remove-btn:hover {
-  background: #ff3333;
+  background: #ff5252;
 }
 
-/* Output Filename Input */
-.filename-input {
-  width: 90%;
+.input-field {
+  width: 95%;
   padding: 10px;
-  margin: 10px 0;
-  border: 2px solid #5a67d8;
+  border: 2px solid #ccc;
   border-radius: 5px;
-  outline: none;
-  transition: all 0.3s ease-in-out;
-}
-
-.filename-input:focus {
-  border-color: #3f51b5;
-  background: #f8f9ff;
-}
-
-/* Error Message */
-.error-text {
-  color: red;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
-/* Upload Button */
-.upload-btn {
-  width: 100%;
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.upload-btn, .reset-btn, .download-btn {
+  flex: 1;
   padding: 10px;
-  background: #5a67d8;
-  color: white;
+  margin: 5px;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: 0.3s;
+}
+
+.upload-btn {
+  background: #4caf50;
+  color: white;
 }
 
 .upload-btn:hover {
-  background: #4a56c2;
+  background: #45a049;
 }
 
-.upload-btn:disabled {
-  background: #c0c4e2;
-  cursor: not-allowed;
+.reset-btn {
+  background: #ff9800;
+  color: white;
 }
 
-/* Loader Animation */
-.loader {
-  width: 20px;
-  height: 20px;
-  border: 3px solid white;
-  border-top: 3px solid #4a56c2;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  display: inline-block;
+.reset-btn:hover {
+  background: #e68900;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.download-btn {
+  background: #007bff;
+  color: white;
 }
 
-/* Success Container */
+.download-btn:hover {
+  background: #0056b3;
+}
+
 .success-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
-  color: #28a745;
-  font-weight: bold;
-  font-size: 16px;
+  margin: 15px 0;
 }
 
-/* Success Icon */
 .success-icon {
-  font-size: 24px;
+  color: #4caf50;
   margin-right: 8px;
 }
 
-/* Download Button */
-.download-btn {
-  width: 100%;
-  padding: 10px;
-  background: #28a745;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: all 0.3s ease-in-out;
+.loader {
+  border: 3px solid white;
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  animation: spin 0.8s linear infinite;
 }
 
-.download-btn:hover {
-  background: #218838;
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
+
+
