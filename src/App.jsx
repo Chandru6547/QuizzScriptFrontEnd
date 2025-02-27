@@ -13,7 +13,7 @@ function App() {
   const [error, setError] = useState("");
 
   const handleFileChange = (e) => {
-    setFiles([...e.target.files]);
+    setFiles((prevFiles) => [...prevFiles, ...Array.from(e.target.files)]);
     setProcessed(false);
   };
 
